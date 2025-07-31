@@ -1,0 +1,87 @@
+services:
+  postgres:
+    image: postgres:14.2
+    container_name: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: Nibuzhid@0
+      POSTGRES_DB: postgres
+    ports:
+      - "15432:5432"
+    volumes:
+      - /docker/postgres/data:/var/lib/postgresql/data
+#    network_mode: "host"
+
+#  nginx-web:
+#    image: nginx:1.23.4
+#    container_name: nginx-web
+#    environment:
+#      # 时区上海
+#      TZ: Asia/Shanghai
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    volumes:
+#      # 证书映射
+#      - /docker/nginx/cert:/etc/nginx/cert
+#      # 配置文件映射
+#      - /docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+#      # 页面目录
+#      - /docker/nginx/html:/usr/share/nginx/html
+#      # 日志目录
+#      - /docker/nginx/log:/var/log/nginx
+#    privileged: true
+#    network_mode: "host"
+
+  redis:
+    image: redis:7.2.8
+    container_name: redis
+    ports:
+      - "16379:16379"  # 外
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      # 修改为相对路径，指向项目内的redis目录
+      - ./redis/conf:/redis/conf:rw
+      - ./redis/data:/redis/data:rw
+    command: "redis-server /redis/conf/redis.conf"
+    privileged: true
+    restart: unless-stopped
+
+
+  minio:
+    # minio 最后一个未阉割版本 不能再进行升级 在往上的版本功能被阉割
+    image: minio/minio:RELEASE.2025-04-22T22-12-26Z
+    container_name: minio
+    ports:
+      # api 端口
+      - "19000:19000"
+      # 控制台端口
+      - "19001:19001"
+    environment:
+      # 时区上海
+      TZ: Asia/Shanghai
+      # 管理后台用户名
+      MINIO_ROOT_USER: nitthiko
+      # 管理后台密码，最小8个字符
+      MINIO_ROOT_PASSWORD: Nibuzhid@0
+      # https需要指定域名
+      #MINIO_SERVER_URL: "https://xxx.com:9000"
+      #MINIO_BROWSER_REDIRECT_URL: "https://xxx.com:9001"
+      # 开启压缩 on 开启 off 关闭
+      MINIO_COMPRESS: "off"
+      # 扩展名 .pdf,.doc 为空 所有类型均压缩
+      MINIO_COMPRESS_EXTENSIONS: ""
+      # mime 类型 application/pdf 为空 所有类型均压缩
+      MINIO_COMPRESS_MIME_TYPES: ""
+    volumes:
+      # 映射当前目录下的data目录至容器内/data目录
+      - /docker/minio/data:/data
+      # 映射配置目录
+      - /docker/minio/config:/root/.minio/
+    command: server --address ':9000' --console-address ':9001' /data  # 指定容器中的目录 /data
+    privileged: true
+#    network_mode: "host"
+
+
+

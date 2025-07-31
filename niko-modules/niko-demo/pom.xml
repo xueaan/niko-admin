@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.niko</groupId>
+        <artifactId>niko-modules</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>niko-demo</artifactId>
+
+    <description>
+        demo模块
+    </description>
+
+    <dependencies>
+
+        <!-- 通用工具-->
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-doc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-sms</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-mail</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-idempotent</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-mybatis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-log</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-excel</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-ratelimiter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-translation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-sensitive</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-encrypt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-tenant</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.niko</groupId>
+            <artifactId>niko-common-websocket</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>

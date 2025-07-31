@@ -1,0 +1,3 @@
+org.niko.common.encrypt.config.EncryptorAutoConfiguration
+org.niko.common.encrypt.config.ApiDecryptAutoConfiguration
+

@@ -20,7 +20,7 @@
 - 在您的网站上添加我们的友情链接，链接如下：
 
   - 名称：Vben Admin
-  - 链接：https://www.vben.pro
+  - 链接：https://www.nikoadmin.pro
   - 描述：Vben Admin 企业级开箱即用的中后台前端解决方案
   - Logo：https://unpkg.com/@vbenjs/static-source@0.1.7/source/logo-v1.webp
 

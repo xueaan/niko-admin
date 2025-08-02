@@ -237,9 +237,9 @@ const defaultPreferences: Preferences = {
     styleType: 'normal',
   },
   copyright: {
-    companyName: 'Vben',
-    companySiteLink: 'https://www.vben.pro',
-    date: '2024',
+    companyName: 'Nitthiko',
+    companySiteLink: 'https://www.nikoadmin.com',
+    date: '2025',
     enable: true,
     icp: '',
     icpLink: '',

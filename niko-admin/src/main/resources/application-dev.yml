@@ -16,7 +16,7 @@ spring:
           type: ${spring.datasource.type}
           driverClassName: org.postgresql.Driver
           url: jdbc:postgresql://localhost:15432/postgres?useUnicode=true&characterEncoding=utf8&useSSL=true&autoReconnect=true&reWriteBatchedInserts=true
-          username: root
+          username: postgres
           password: Nibuzhid@0
 #          type: ${spring.datasource.type}
 #          driverClassName: com.mysql.cj.jdbc.Driver

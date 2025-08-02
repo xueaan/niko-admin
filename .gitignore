@@ -36,13 +36,181 @@ nbdist/
 .nb-gradle/
 
 ######################################################################
+# Frontend (Node.js/Vue.js)
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build outputs
+dist/
+dist-ssr/
+dist.zip
+dist.tar
+dist.war
+*-dist.zip
+*-dist.tar
+*-dist.war
+dev-dist/
+coverage/
+
+# Cache directories
+.cache/
+.turbo/
+.temp/
+.nitro/
+.output/
+.stylelintcache
+.eslintcache
+**/.vitepress/cache
+
+# Lock files (if using different package managers)
+yarn.lock
+package-lock.json
+# pnpm-lock.yaml  # 取消注释如果你不想跟踪 pnpm lock 文件
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+######################################################################
+# Java/Spring Boot specific
+
+# Application logs
+application*.log
+spring.log
+
+# Configuration files with sensitive data
+application-local.yml
+application-local.yaml
+application-local.properties
+*-local.yml
+*-local.yaml
+*-local.properties
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+h2/
+
+######################################################################
+# OS specific
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+######################################################################
+# Development tools
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains (already covered but adding more)
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse (already covered but ensuring completeness)
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+######################################################################
+# Testing
+test-output/
+test-results/
+coverage/
+*.lcov
+
+######################################################################
+# Docker
+.dockerignore
+docker-compose.override.yml
+docker-compose.override.yaml
+
+######################################################################
 # Others
 *.log
 *.xml.versionsBackup
 *.swp
+*.orig
+*.rej
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# Temporary files
+*.tmp
+*.temp
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
 
 !*/build/*.java
 !*/build/*.html
 !*/build/*.xml
 
 .flattened-pom.xml
+
+# Generated documentation
+docs/build/
+docs/dist/
+
+# Monitoring and profiling
+*.hprof
+*.prof
+
+# Security
+*.key
+*.pem
+*.p12
+*.jks
+secrets/
+
+.vscode
+.kiro
+.cursor
+.IDEA

@@ -55,6 +55,11 @@ export const overridesPreferences = defineOverridesPreferences({
      */
     radius: '0.375',
   },
+  "copyright": {
+    "companyName": "Nitthiko",
+    "companySiteLink": "https://www.nikoadmin.pro",
+    "date": "2025"
+  },
   /**
    * !!! 更改配置后请清空浏览器缓存
    * 在这里更换logo

@@ -38,14 +38,7 @@ const coreRoutes: RouteRecordRaw[] = [
     redirect: preferences.app.defaultHomePath,
     children: [],
   },
-  {
-    component: () => import('#/views/_core/social-callback/index.vue'),
-    meta: {
-      title: $t('page.auth.oauthLogin'),
-    },
-    name: 'OAuthRedirect',
-    path: '/social-callback',
-  },
+
   {
     component: AuthPageLayout,
     meta: {
@@ -64,23 +57,8 @@ const coreRoutes: RouteRecordRaw[] = [
           title: $t('page.auth.login'),
         },
       },
-      {
-        name: 'CodeLogin',
-        path: 'code-login',
-        component: () => import('#/views/_core/authentication/code-login.vue'),
-        meta: {
-          title: $t('page.auth.codeLogin'),
-        },
-      },
-      {
-        name: 'QrCodeLogin',
-        path: 'qrcode-login',
-        component: () =>
-          import('#/views/_core/authentication/qrcode-login.vue'),
-        meta: {
-          title: $t('page.auth.qrcodeLogin'),
-        },
-      },
+
+
       {
         name: 'ForgetPassword',
         path: 'forget-password',

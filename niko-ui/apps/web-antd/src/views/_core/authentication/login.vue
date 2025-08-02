@@ -16,9 +16,6 @@ import { tenantList } from '#/api';
 import { captchaImage } from '#/api/core/captcha';
 import { useAuthStore } from '#/store';
 
-import { useLoginTenantId } from '../oauth-common';
-import OAuthLogin from './oauth-login.vue';
-
 defineOptions({ name: 'Login' });
 
 const authStore = useAuthStore();
@@ -68,7 +65,7 @@ onMounted(async () => {
   await Promise.all([loadCaptcha(), loadTenant()]);
 });
 
-const { loginTenantId } = useLoginTenantId();
+const loginTenantId = ref(DEFAULT_TENANT_ID);
 
 const formSchema = computed((): VbenFormSchema[] => {
   return [
@@ -169,12 +166,8 @@ async function handleAccountLogin(values: LoginAndRegisterParams) {
     :form-schema="formSchema"
     :loading="authStore.loginLoading"
     :show-register="false"
-    :show-third-party-login="true"
+    :show-third-party-login="false"
     @submit="handleAccountLogin"
   >
-    <!-- 可通过show-third-party-login控制是否显示第三方登录 -->
-    <template #third-party-login>
-      <OAuthLogin />
-    </template>
   </AuthenticationLogin>
 </template>

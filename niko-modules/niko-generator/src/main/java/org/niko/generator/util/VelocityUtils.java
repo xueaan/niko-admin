@@ -1,16 +1,16 @@
-package org.dromara.generator.util;
+package org.niko.generator.util;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.ObjectUtil;
-import org.dromara.generator.constant.GenConstants;
-import org.dromara.common.core.utils.DateUtils;
-import org.dromara.common.core.utils.StringUtils;
-import org.dromara.common.json.utils.JsonUtils;
-import org.dromara.common.mybatis.helper.DataBaseHelper;
-import org.dromara.generator.domain.GenTable;
-import org.dromara.generator.domain.GenTableColumn;
+import org.niko.generator.constant.GenConstants;
+import org.niko.common.core.utils.DateUtils;
+import org.niko.common.core.utils.StringUtils;
+import org.niko.common.json.utils.JsonUtils;
+import org.niko.common.mybatis.helper.DataBaseHelper;
+import org.niko.generator.domain.GenTable;
+import org.niko.generator.domain.GenTableColumn;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.apache.velocity.VelocityContext;
@@ -287,8 +287,8 @@ public class VelocityUtils {
             } else if (!column.isSuperColumn() && GenConstants.TYPE_BIGDECIMAL.equals(column.getJavaType())) {
                 importList.add("java.math.BigDecimal");
             } else if (!column.isSuperColumn() && "imageUpload".equals(column.getHtmlType())) {
-                importList.add("org.dromara.common.translation.annotation.Translation");
-                importList.add("org.dromara.common.translation.constant.TransConstant");
+                importList.add("org.niko.common.translation.annotation.Translation");
+                importList.add("org.niko.common.translation.constant.TransConstant");
             }
         }
         return importList;

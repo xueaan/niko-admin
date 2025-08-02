@@ -39,9 +39,9 @@ exports[`defaultPreferences immutability test > should not modify the config obj
     "styleType": "normal",
   },
   "copyright": {
-    "companyName": "Vben",
-    "companySiteLink": "https://www.vben.pro",
-    "date": "2024",
+    "companyName": "Nitthiko",
+    "companySiteLink": "https://www.nikoadmin.pro",
+    "date": "2025",
     "enable": true,
     "icp": "",
     "icpLink": "",

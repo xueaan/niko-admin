@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { TabPane, Tabs } from 'ant-design-vue';
 
-import AccountBind from './components/account-bind.vue';
+// import AccountBind from './components/account-bind.vue';
 import BaseSetting from './components/base-setting.vue';
 import OnlineDevice from './components/online-device.vue';
 import SecureSetting from './components/secure-setting.vue';
@@ -17,11 +17,11 @@ const settingList = [
     key: '2',
     name: '安全设置',
   },
-  {
-    component: AccountBind,
-    key: '3',
-    name: '账号绑定',
-  },
+  // {
+  //   component: AccountBind,
+  //   key: '3',
+  //   name: '账号绑定',
+  // },
   {
     component: OnlineDevice,
     key: '4',

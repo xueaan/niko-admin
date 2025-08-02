@@ -50,10 +50,7 @@
             <artifactId>niko-common-doc</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.niko</groupId>
-            <artifactId>niko-common-social</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>org.niko</groupId>
@@ -81,11 +78,7 @@
             <artifactId>niko-generator</artifactId>
         </dependency>
 
-        <!--  demo模块  -->
-        <dependency>
-            <groupId>org.niko</groupId>
-            <artifactId>niko-demo</artifactId>
-        </dependency>
+   
 
         <!--  工作流模块  -->
         <dependency>

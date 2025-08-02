@@ -1,6 +1,6 @@
 import { createIconifyOfflineIcon } from '@vben-core/icons';
 
-import githubOutlined from '@iconify/icons-ant-design/github-outlined';
+
 import inboxIcon from '@iconify/icons-ant-design/inbox-outlined';
 import userOutlined from '@iconify/icons-ant-design/user-outlined';
 import ucIcon from '@iconify/icons-arcticons/uc-browser';
@@ -25,29 +25,22 @@ import vueIcon from '@iconify/icons-logos/vue';
 import iphoneIcon from '@iconify/icons-majesticons/iphone-x-apps-line';
 import menuIcon from '@iconify/icons-material-symbols/menu';
 import okButtonIcon from '@iconify/icons-mdi/button-pointer';
-import micromessengerIcon from '@iconify/icons-mdi/wechat';
+import wechatIcon from '@iconify/icons-mdi/wechat';
 import defaultBrowserIcon from '@iconify/icons-ph/browser-duotone';
 import baiduIcon from '@iconify/icons-ri/baidu-fill';
 import dingdingFill from '@iconify/icons-ri/dingding-fill';
 import dingtalkIcon from '@iconify/icons-ri/dingding-line';
 import taobaoIconFill from '@iconify/icons-ri/taobao-fill';
-import giteeIcon from '@iconify/icons-simple-icons/gitee';
 import qqIcon from '@iconify/icons-simple-icons/tencentqq';
 import javaIcon from '@iconify/icons-skill-icons/java-light';
 import tsIcon from '@iconify/icons-skill-icons/typescript';
 import xmlIcon from '@iconify/icons-tabler/file-type-xml';
-import githubOAuthIcon from '@iconify/icons-uiw/github';
 import excelIcon from '@iconify/icons-vscode-icons/file-type-excel';
 import osxIcon from '@iconify/icons-wpf/macos';
 
 import './menu-icons';
 
 // 用户 下拉菜单
-export const GitHubOutlined = createIconifyOfflineIcon(
-  'ant-design:github-outlined',
-  githubOutlined,
-);
-
 export const UserOutlined = createIconifyOfflineIcon(
   'ant-design:user-outlined',
   userOutlined,
@@ -86,15 +79,6 @@ export const DingdingIcon = createIconifyOfflineIcon(
   'ri:dingding-fill',
   dingdingFill,
 );
-export const GiteeIcon = createIconifyOfflineIcon(
-  'simple-icons:gitee',
-  giteeIcon,
-);
-export const GithubOAuthIcon = createIconifyOfflineIcon(
-  'uiw:github',
-  githubOAuthIcon,
-);
-
 // 系统相关图标
 export const WindowsIcon = createIconifyOfflineIcon(
   'devicon:windows8',
@@ -128,10 +112,6 @@ export const FirefoxIcon = createIconifyOfflineIcon(
 );
 export const OperaIcon = createIconifyOfflineIcon('logos:opera', operaIcon);
 export const SafariIcon = createIconifyOfflineIcon('logos:safari', safariIcon);
-export const MicromessengerIcon = createIconifyOfflineIcon(
-  'mdi:wechat',
-  micromessengerIcon,
-);
 export const QuarkIcon = createIconifyOfflineIcon(
   'logos:quarkus-icon',
   quarkIcon,
@@ -146,6 +126,8 @@ export const DingtalkIcon = createIconifyOfflineIcon(
 );
 export const UcIcon = createIconifyOfflineIcon('arcticons:uc-browser', ucIcon);
 export const BaiduIcon = createIconifyOfflineIcon('ri:baidu-fill', baiduIcon);
+// 微信浏览器图标
+export const MicromessengerIcon = createIconifyOfflineIcon('mdi:wechat', wechatIcon);
 // 未知浏览器图标
 export const DefaultBrowserIcon = createIconifyOfflineIcon(
   'ph:browser-duotone',

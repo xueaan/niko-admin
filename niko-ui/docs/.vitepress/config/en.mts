@@ -166,7 +166,7 @@ function nav(): DefaultTheme.NavItem[] {
           text: 'Vben Admin',
           items: [
             {
-              link: 'https://www.vben.pro',
+              link: 'https://www.nikoadmin.pro',
               text: 'Demo Version',
             },
             {

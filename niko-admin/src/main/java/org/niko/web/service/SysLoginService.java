@@ -6,10 +6,8 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Opt;
 import cn.hutool.core.util.ObjectUtil;
-import com.baomidou.lock.annotation.Lock4j;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.zhyd.oauth.model.AuthUser;
 import org.niko.common.core.constant.CacheConstants;
 import org.niko.common.core.constant.Constants;
 import org.niko.common.core.constant.SystemConstants;
@@ -18,7 +16,6 @@ import org.niko.common.core.domain.dto.PostDTO;
 import org.niko.common.core.domain.dto.RoleDTO;
 import org.niko.common.core.domain.model.LoginUser;
 import org.niko.common.core.enums.LoginType;
-import org.niko.common.core.exception.ServiceException;
 import org.niko.common.core.exception.user.UserException;
 import org.niko.common.core.utils.*;
 import org.niko.common.log.event.LogininforEvent;
@@ -28,7 +25,6 @@ import org.niko.common.satoken.utils.LoginHelper;
 import org.niko.common.tenant.exception.TenantException;
 import org.niko.common.tenant.helper.TenantHelper;
 import org.niko.system.domain.SysUser;
-import org.niko.system.domain.bo.SysSocialBo;
 import org.niko.system.domain.vo.*;
 import org.niko.system.mapper.SysUserMapper;
 import org.niko.system.service.*;
@@ -58,50 +54,13 @@ public class SysLoginService {
 
     private final ISysTenantService tenantService;
     private final ISysPermissionService permissionService;
-    private final ISysSocialService sysSocialService;
     private final ISysRoleService roleService;
     private final ISysDeptService deptService;
     private final ISysPostService postService;
     private final SysUserMapper userMapper;
 
 
-    /**
-     * 绑定第三方用户
-     *
-     * @param authUserData 授权响应实体
-     */
-    @Lock4j
-    public void socialRegister(AuthUser authUserData) {
-        String authId = authUserData.getSource() + authUserData.getUuid();
-        // 第三方用户信息
-        SysSocialBo bo = BeanUtil.toBean(authUserData, SysSocialBo.class);
-        BeanUtil.copyProperties(authUserData.getToken(), bo);
-        Long userId = LoginHelper.getUserId();
-        bo.setUserId(userId);
-        bo.setAuthId(authId);
-        bo.setOpenId(authUserData.getUuid());
-        bo.setUserName(authUserData.getUsername());
-        bo.setNickName(authUserData.getNickname());
-        List<SysSocialVo> checkList = sysSocialService.selectByAuthId(authId);
-        if (CollUtil.isNotEmpty(checkList)) {
-            throw new ServiceException("此三方账号已经被绑定!");
-        }
-        // 查询是否已经绑定用户
-        SysSocialBo params = new SysSocialBo();
-        params.setUserId(userId);
-        params.setSource(bo.getSource());
-        List<SysSocialVo> list = sysSocialService.queryList(params);
-        if (CollUtil.isEmpty(list)) {
-            // 没有绑定用户, 新增用户信息
-            sysSocialService.insertByBo(bo);
-        } else {
-            // 更新用户信息
-            bo.setId(list.get(0).getId());
-            sysSocialService.updateByBo(bo);
-            // 如果要绑定的平台账号已经被绑定过了 是否抛异常自行决断
-            // throw new ServiceException("此平台账号已经被绑定!");
-        }
-    }
+
 
 
     /**

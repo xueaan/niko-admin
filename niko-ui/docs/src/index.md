@@ -16,7 +16,7 @@ hero:
       link: /guide/introduction/vben
     - theme: alt
       text: 在线预览
-      link: https://www.vben.pro
+      link: https://www.nikoadmin.pro
     - theme: alt
       text: 在 GitHub 查看
       link: https://github.com/vbenjs/vue-vben-admin

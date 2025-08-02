@@ -42,9 +42,7 @@ const menus = computed(() => {
   const defaultMenus = [
     {
       handler: () => {
-        openWindow(VBEN_DOC_URL, {
-          target: '_blank',
-        });
+        router.push('/doc');
       },
       icon: BookOpenText,
       text: $t('ui.widgets.document'),
@@ -55,33 +53,6 @@ const menus = computed(() => {
       },
       icon: UserOutlined,
       text: $t('ui.widgets.profile'),
-    },
-    {
-      handler: () => {
-        openWindow('https://gitee.com/dapppp/niko-plus-vben5', {
-          target: '_blank',
-        });
-      },
-      icon: () => h(GiteeIcon, { class: 'text-red-800' }),
-      text: 'Gitee项目地址',
-    },
-    {
-      handler: () => {
-        openWindow(VBEN_GITHUB_URL, {
-          target: '_blank',
-        });
-      },
-      icon: GitHubOutlined,
-      text: 'Vben官方地址',
-    },
-    {
-      handler: () => {
-        openWindow(`${VBEN_GITHUB_URL}/issues`, {
-          target: '_blank',
-        });
-      },
-      icon: CircleHelp,
-      text: $t('ui.widgets.qa'),
     },
   ];
   /**

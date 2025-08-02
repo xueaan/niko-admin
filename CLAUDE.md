@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-Niko-Admin是一个Java后端 + Vue前端的全栈多租户管理系统，基于Spring Boot 3.4.7和Vue 3构建。
+Niko-Admin是一个Java后端 + Vue前端的全栈多租户管理系统 (版本: 5.4.1)，基于Spring Boot 3.4.7和Vue 3构建。
 
 ## 开发环境要求
 
@@ -107,7 +107,6 @@ docker-compose down
 - **niko-modules**: 业务模块
   - `niko-system`: 系统管理模块
   - `niko-generator`: 代码生成器
-  - `niko-demo`: 演示模块
   - `niko-job`: 定时任务模块
   - `niko-workflow`: 工作流模块
 
@@ -161,7 +160,11 @@ docker-compose down
 - 限流控制 (基于注解的接口限流)
 - 操作日志记录 (基于切面的日志记录)
 - 工作流引擎 (Warm-Flow集成)
-- 代码生成器 (支持多种模板)
+- 代码生成器 (支持多种模板，包括Java/Vue模板)
+
+## 代码生成器使用
+
+访问 http://localhost:8080/tool/gen 进行代码生成，配置文件在 `generator.yml`。
 
 ## 开发注意事项
 

@@ -27,17 +27,7 @@ export namespace AuthApi {
     tenantId: string;
   }
 
-  /**
-   * @description: oauth登录需要用到的参数
-   * @param socialCode 第三方参数
-   * @param socialState 第三方参数
-   * @param source 与后端的 justauth.type.xxx的回调地址的source对应
-   */
-  export interface OAuthLoginParams extends BaseLoginParams {
-    socialCode: string;
-    socialState: string;
-    source: string;
-  }
+
 
   /**
    * @description: 验证码登录需要用到的参数
@@ -53,7 +43,7 @@ export namespace AuthApi {
     password: string;
   }
 
-  export type LoginParams = OAuthLoginParams | SimpleLoginParams;
+  export type LoginParams = SimpleLoginParams;
 
   // /** 登录接口参数 */
   // export interface LoginParams {
@@ -172,33 +162,4 @@ export async function getAccessCodesApi() {
   return requestClient.get<string[]>('/auth/codes');
 }
 
-/**
- * 绑定第三方账号
- * @param source 绑定的来源
- * @returns 跳转url
- */
-export function authBinding(source: string, tenantId: string) {
-  return requestClient.get<string>(`/auth/binding/${source}`, {
-    params: {
-      domain: window.location.host,
-      tenantId,
-    },
-  });
-}
 
-/**
- * 取消绑定
- * @param id id
- */
-export function authUnbinding(id: string) {
-  return requestClient.deleteWithMsg<void>(`/auth/unlock/${id}`);
-}
-
-/**
- * oauth授权回调
- * @param data oauth授权
- * @returns void
- */
-export function authCallback(data: AuthApi.OAuthLoginParams) {
-  return requestClient.post<void>('/auth/social/callback', data);
-}

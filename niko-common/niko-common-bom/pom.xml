@@ -117,11 +117,7 @@
                 <version>${revision}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.niko</groupId>
-                <artifactId>niko-common-social</artifactId>
-                <version>${revision}</version>
-            </dependency>
+
 
             <!-- web服务 -->
             <dependency>

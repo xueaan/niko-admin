@@ -266,6 +266,7 @@ const headerSlots = computed(() => {
         </template>
         <template v-if="showHeaderNav" #menu>
           <LayoutMenu
+
             :default-active="headerActive"
             :menus="wrapperMenus(headerMenus)"
             :rounded="isMenuRounded"
@@ -292,6 +293,7 @@ const headerSlots = computed(() => {
         :accordion="preferences.navigation.accordion"
         :collapse="preferences.sidebar.collapsed"
         :collapse-show-title="preferences.sidebar.collapsedShowTitle"
+
         :default-active="sidebarActive"
         :menus="wrapperMenus(sidebarMenus)"
         :rounded="isMenuRounded"
@@ -317,6 +319,7 @@ const headerSlots = computed(() => {
       <LayoutExtraMenu
         :accordion="preferences.navigation.accordion"
         :collapse="preferences.sidebar.extraCollapse"
+
         :menus="wrapperMenus(extraMenus)"
         :rounded="isMenuRounded"
         :theme="sidebarTheme"

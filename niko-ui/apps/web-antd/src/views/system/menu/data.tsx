@@ -189,22 +189,14 @@ export const drawerSchema: FormSchemaGetter = () => [
     label: '菜单类型',
   },
   {
-    component: 'Input',
+    component: 'IconPicker',
     dependencies: {
       // 类型不为按钮时显示
       show: (values) => values.menuType !== 'F',
       triggerFields: ['menuType'],
     },
-    renderComponentContent: (model) => ({
-      addonBefore: () => <VbenIcon icon={model.icon} />,
-      addonAfter: () => (
-        <a href="https://icon-sets.iconify.design/" target="_blank">
-          搜索图标
-        </a>
-      ),
-    }),
     fieldName: 'icon',
-    help: '点击搜索图标跳转到iconify & 粘贴',
+    help: '选择图标',
     label: '菜单图标',
   },
   {

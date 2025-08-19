@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "gen",
+      "type": "org.niko.generator.config.GenConfig",
+      "sourceType": "org.niko.generator.config.GenConfig"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

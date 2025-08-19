@@ -1,0 +1,14 @@
+// niko-common-idempotent - 幂等功能模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    implementation project(':niko-common:niko-common-json')
+    implementation project(':niko-common:niko-common-redis')
+    
+    // Hutool加密
+    implementation 'cn.hutool:hutool-crypto'
+    
+    // Sa-Token核心
+    implementation 'cn.dev33:sa-token-core'
+}

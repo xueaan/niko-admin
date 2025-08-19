@@ -1,8 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(pnpm check:type:*)",
+      "Bash(pnpm dev:antd:*)",
+      "Bash(pnpm:*)",
+      "Bash(mvn clean:*)",
+      "Bash(mvn dependency:tree:*)",
+      "Bash(mvn compile:*)",
+      "Bash(mvn install:*)",
+      "Bash(./build.bat)"
     ],
-    "deny": []
+    "deny": [],
+    "additionalDirectories": [
+      "D:\\"
+    ]
   }
 }

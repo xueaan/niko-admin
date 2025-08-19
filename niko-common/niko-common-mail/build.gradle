@@ -1,0 +1,12 @@
+// niko-common-mail - 邮件模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    
+    // Jakarta Mail API
+    implementation 'jakarta.mail:jakarta.mail-api'
+    
+    // Jakarta Mail 实现
+    implementation 'org.eclipse.angus:jakarta.mail'
+}

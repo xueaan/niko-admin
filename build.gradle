@@ -1,0 +1,172 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.7' apply false
+    id 'io.spring.dependency-management' version '1.1.6' apply false
+    id 'org.graalvm.buildtools.native' version '0.10.4' apply false
+}
+
+// 全局配置
+ext {
+    springBootVersion = '3.4.7'
+    projectVersion = '5.4.1'
+    javaVersion = JavaVersion.VERSION_17
+    
+    // 版本管理
+    mybatisVersion = '3.5.16'
+    springdocVersion = '2.8.8'
+    therapiJavadocVersion = '0.15.0'
+    fastexcelVersion = '1.2.0'
+    velocityVersion = '2.3'
+    satokenVersion = '1.44.0'
+    mybatisPlusVersion = '3.5.12'
+    p6spyVersion = '3.9.1'
+    hutoolVersion = '5.8.38'
+    springBootAdminVersion = '3.4.7'
+    redissonVersion = '3.50.0'
+    lock4jVersion = '2.2.7'
+    dynamicDsVersion = '4.3.1'
+    mapstructPlusVersion = '1.4.8'
+    mapstructPlusLombokVersion = '0.2.0'
+    mapstructPlusAnnotationVersion = '1.4.8'
+    lombokVersion = '1.18.36'
+    bouncycastleVersion = '1.80'
+    ip2regionVersion = '2.7.0'
+    awsSdkVersion = '2.28.22'
+    sms4jVersion = '3.3.4'
+    fastjsonVersion = '1.2.83'
+    anylineVersion = '8.7.2-20250603'
+    warmFlowVersion = '1.7.4'
+}
+
+// 所有项目通用配置
+allprojects {
+    group = 'org.niko'
+    version = projectVersion
+    
+    repositories {
+        maven { url 'https://mirrors.huaweicloud.com/repository/maven/' }
+        mavenCentral()
+    }
+}
+
+// 所有子项目通用配置
+subprojects {
+    // 排除BOM项目，因为它使用java-platform插件
+    if (!project.name.endsWith('-bom')) {
+        apply plugin: 'java'
+        apply plugin: 'io.spring.dependency-management'
+        
+        java {
+            toolchain {
+                languageVersion = JavaLanguageVersion.of(javaVersion.majorVersion)
+            }
+        }
+        
+        configurations {
+            compileOnly {
+                extendsFrom annotationProcessor
+            }
+        }
+        
+        // 通用依赖管理
+        dependencyManagement {
+            imports {
+                mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+                mavenBom "cn.hutool:hutool-bom:${hutoolVersion}"
+            }
+        }
+        
+        // 通用依赖
+        dependencies {
+            // Spring Boot
+            implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+            implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+            implementation "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
+            implementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+            annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
+            
+            // MyBatis Plus
+            implementation "com.baomidou:mybatis-plus-spring-boot3-starter:${mybatisPlusVersion}"
+            implementation "com.baomidou:mybatis-plus-jsqlparser:${mybatisPlusVersion}"
+            implementation "com.baomidou:mybatis-plus-annotation:${mybatisPlusVersion}"
+            implementation "org.mybatis:mybatis:${mybatisVersion}"
+            
+            // Sa-Token
+            implementation "cn.dev33:sa-token-spring-boot3-starter:${satokenVersion}"
+            implementation "cn.dev33:sa-token-jwt:${satokenVersion}"
+            implementation "cn.dev33:sa-token-core:${satokenVersion}"
+            
+            // 工具库
+            compileOnly "org.projectlombok:lombok:${lombokVersion}"
+            annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+            testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+            testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+            implementation "cn.hutool:hutool-core:${hutoolVersion}"
+            implementation "cn.idev.excel:fastexcel:${fastexcelVersion}"
+            implementation "org.apache.velocity:velocity-engine-core:${velocityVersion}"
+            
+            // Redis和缓存
+            implementation "org.redisson:redisson-spring-boot-starter:${redissonVersion}"
+            implementation "com.baomidou:lock4j-redisson-spring-boot-starter:${lock4jVersion}"
+            
+            // 数据库相关
+            implementation "com.baomidou:dynamic-datasource-spring-boot3-starter:${dynamicDsVersion}"
+            implementation "p6spy:p6spy:${p6spyVersion}"
+            
+            // 文档和注解处理
+            implementation "org.springdoc:springdoc-openapi-starter-webmvc-api:${springdocVersion}"
+            implementation "com.github.therapi:therapi-runtime-javadoc:${therapiJavadocVersion}"
+            
+            // 监控
+            implementation "de.codecentric:spring-boot-admin-starter-server:${springBootAdminVersion}"
+            implementation "de.codecentric:spring-boot-admin-starter-client:${springBootAdminVersion}"
+            
+            // 对象存储
+            implementation "software.amazon.awssdk:s3:${awsSdkVersion}"
+            implementation "software.amazon.awssdk:s3-transfer-manager:${awsSdkVersion}"
+            implementation "software.amazon.awssdk:netty-nio-client:${awsSdkVersion}"
+            
+            // 短信服务
+            implementation "org.dromara.sms4j:sms4j-spring-boot-starter:${sms4jVersion}"
+            
+            // 加密
+            implementation "org.bouncycastle:bcprov-jdk15to18:${bouncycastleVersion}"
+            
+            // MapStruct
+            implementation "io.github.linpeilie:mapstruct-plus-spring-boot-starter:${mapstructPlusVersion}"
+            
+            // 其他工具
+            implementation "org.lionsoul:ip2region:${ip2regionVersion}"
+            implementation "com.alibaba:fastjson:${fastjsonVersion}"
+            implementation "org.jetbrains:annotations:24.1.0"
+            
+            // 工作流
+            implementation "org.dromara.warm:warm-flow-mybatis-plus-sb3-starter:${warmFlowVersion}"
+            implementation "org.dromara.warm:warm-flow-plugin-ui-sb-web:${warmFlowVersion}"
+        }
+        
+        // 通用注解处理器配置
+        tasks.withType(JavaCompile) {
+            options.encoding = 'UTF-8'
+            options.compilerArgs += ['-parameters']
+        }
+
+        // MapStruct Plus 注解处理器（确保所有子模块都能生成转换代码）
+        dependencies {
+            annotationProcessor "io.github.linpeilie:mapstruct-plus-processor:${mapstructPlusVersion}"
+        }
+        
+        // 测试配置
+        test {
+            useJUnitPlatform()
+            systemProperty 'file.encoding', 'UTF-8'
+        }
+        
+        // 打包配置
+        jar {
+            enabled = true
+            archiveClassifier = ''
+        }
+    }
+}
+

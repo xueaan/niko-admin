@@ -1,0 +1,11 @@
+plugins {
+    id 'java-library'
+}
+
+description = '任务调度'
+
+dependencies {
+    // 通用工具模块
+    implementation project(':niko-common:niko-common-json')
+    implementation project(':niko-common:niko-common-job')
+}

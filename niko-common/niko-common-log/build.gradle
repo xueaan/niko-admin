@@ -1,0 +1,8 @@
+// niko-common-log - 日志记录模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    implementation project(':niko-common:niko-common-satoken')
+    implementation project(':niko-common:niko-common-json')
+}

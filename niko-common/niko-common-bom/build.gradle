@@ -1,0 +1,74 @@
+// niko-common-bom - 依赖管理模块
+// 类似于Maven的BOM，用于统一管理所有common模块的版本
+
+apply plugin: 'java-platform'
+
+dependencies {
+    constraints {
+        // 核心模块
+        api project(':niko-common:niko-common-core')
+        
+        // 接口模块
+        // api project(':niko-common:niko-common-doc')
+        
+        // Excel模块
+        // api project(':niko-common:niko-common-excel')
+        
+        // 幂等模块
+        // api project(':niko-common:niko-common-idempotent')
+        
+        // 调度模块
+        // api project(':niko-common:niko-common-job')
+        
+        // 日志记录模块
+        // api project(':niko-common:niko-common-log')
+        
+        // 邮件服务模块
+        // api project(':niko-common:niko-common-mail')
+        
+        // 数据库服务模块
+        // api project(':niko-common:niko-common-mybatis')
+        
+        // OSS模块
+        // api project(':niko-common:niko-common-oss')
+        
+        // 限流模块
+        // api project(':niko-common:niko-common-ratelimiter')
+        
+        // 缓存服务模块
+        // api project(':niko-common:niko-common-redis')
+        
+        // SaToken模块
+        // api project(':niko-common:niko-common-satoken')
+        
+        // 安全模块
+        // api project(':niko-common:niko-common-security')
+        
+        // 短信模块
+        // api project(':niko-common:niko-common-sms')
+        
+        // Web服务模块
+        // api project(':niko-common:niko-common-web')
+        
+        // 翻译模块
+        // api project(':niko-common:niko-common-translation')
+        
+        // 脱敏模块
+        // api project(':niko-common:niko-common-sensitive')
+        
+        // 序列化模块
+        // api project(':niko-common:niko-common-json')
+        
+        // 数据库加解密模块
+        // api project(':niko-common:niko-common-encrypt')
+        
+        // 租户模块
+        // api project(':niko-common:niko-common-tenant')
+        
+        // WebSocket模块
+        // api project(':niko-common:niko-common-websocket')
+        
+        // SSE模块
+        // api project(':niko-common:niko-common-sse')
+    }
+}

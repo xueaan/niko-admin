@@ -166,3 +166,6 @@ export const DefaultFileIcon = createIconifyOfflineIcon(
   'flat-color-icons:folder',
   defaultFileIcon,
 );
+
+// 导出离线图标集合
+export * from './offline-collection';

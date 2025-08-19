@@ -1,0 +1,42 @@
+// niko-common-core - 核心模块
+
+apply plugin: 'java-library'
+
+dependencies {
+    // Spring框架基本的核心工具
+    implementation 'org.springframework:spring-context-support'
+    
+    // SpringWeb模块
+    implementation 'org.springframework:spring-web'
+    
+    // 自定义验证注解
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    
+    // AOP支持
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    
+    // 常用工具类
+    implementation 'org.apache.commons:commons-lang3'
+    
+    // Servlet包
+    implementation 'jakarta.servlet:jakarta.servlet-api'
+    
+    // Hutool工具库
+    implementation 'cn.hutool:hutool-core'
+    implementation 'cn.hutool:hutool-http'
+    api 'cn.hutool:hutool-extra'
+    
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    
+    // 自动生成YML配置关联JSON文件
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+    runtimeOnly 'org.springframework.boot:spring-boot-properties-migrator'
+    
+    // MapStruct Plus
+    implementation 'io.github.linpeilie:mapstruct-plus-spring-boot-starter'
+    
+    // 离线IP地址定位库
+    implementation 'org.lionsoul:ip2region'
+}

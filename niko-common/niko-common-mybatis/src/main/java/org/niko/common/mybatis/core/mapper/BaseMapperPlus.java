@@ -331,4 +331,14 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         return StreamUtils.toList(this.selectObjs(wrapper), mapper);
     }
 
+    /**
+     * 根据条件判断是否存在符合条件的记录
+     *
+     * @param wrapper 查询条件Wrapper
+     * @return 是否存在符合条件的记录
+     */
+    default boolean exists(Wrapper<T> wrapper) {
+        return this.selectCount(wrapper) > 0;
+    }
+
 }

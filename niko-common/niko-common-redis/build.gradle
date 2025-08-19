@@ -1,0 +1,18 @@
+// niko-common-redis - 缓存服务模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    
+    // Redisson
+    implementation 'org.redisson:redisson-spring-boot-starter'
+    
+    // Lock4j 分布式锁
+    implementation 'com.baomidou:lock4j-redisson-spring-boot-starter'
+    
+    // Caffeine缓存
+    implementation 'com.github.ben-manes.caffeine:caffeine'
+    
+    // Jackson JSR310时间处理
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+}

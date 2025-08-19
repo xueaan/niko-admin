@@ -1,0 +1,12 @@
+// niko-common-json - 序列化模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    
+    // JSON工具类
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    
+    // Jackson JSR310时间处理
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+}

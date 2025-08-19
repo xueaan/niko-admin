@@ -1,0 +1,30 @@
+// niko-common-web - Web服务模块
+
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    implementation project(':niko-common:niko-common-json')
+    implementation project(':niko-common:niko-common-sse')
+    implementation project(':niko-common:niko-common-redis')
+    
+    // SpringBoot Web容器（排除tomcat，使用undertow）
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    }
+    
+    // web 容器使用 undertow 性能更强
+    implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    
+    // Spring Boot Actuator
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    
+    // Hutool验证码
+    api 'cn.hutool:hutool-captcha'
+    
+    // Hutool加密
+    api 'cn.hutool:hutool-crypto'
+}

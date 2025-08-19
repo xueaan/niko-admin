@@ -1,0 +1,16 @@
+// niko-common-satoken - Sa-Token权限认证模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    implementation project(':niko-common:niko-common-redis')
+    
+    // Sa-Token 权限认证, 在线文档：http://sa-token.dev33.cn/
+    implementation 'cn.dev33:sa-token-spring-boot3-starter'
+    
+    // Sa-Token 整合 jwt
+    implementation 'cn.dev33:sa-token-jwt'
+    
+    // Caffeine缓存
+    implementation 'com.github.ben-manes.caffeine:caffeine'
+}

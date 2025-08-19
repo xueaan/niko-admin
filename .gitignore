@@ -214,3 +214,5 @@ secrets/
 .kiro
 .cursor
 .IDEA
+docs
+.claude

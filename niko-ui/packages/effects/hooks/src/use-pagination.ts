@@ -39,10 +39,19 @@ export function usePagination<T = any>(list: Ref<T[]>, pageSize: number) {
   });
 
   function setCurrentPage(page: number) {
-    if (page < 1 || page > unref(totalPages)) {
-      throw new Error('Invalid page number');
+    const maxPages = unref(totalPages);
+    
+    // 自动修正无效页码而不是抛出错误
+    if (page < 1) {
+      currentPage.value = 1;
+    } else if (maxPages > 0 && page > maxPages) {
+      currentPage.value = maxPages;
+    } else if (maxPages === 0) {
+      // 如果没有数据，设置为1
+      currentPage.value = 1;
+    } else {
+      currentPage.value = page;
     }
-    currentPage.value = page;
   }
 
   function setPageSize(pageSize: number) {

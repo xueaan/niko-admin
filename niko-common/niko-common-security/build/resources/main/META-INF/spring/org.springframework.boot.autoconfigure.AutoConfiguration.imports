@@ -1,0 +1,2 @@
+org.niko.common.security.handler.AllUrlHandler
+org.niko.common.security.config.SecurityConfig

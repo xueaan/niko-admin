@@ -140,7 +140,8 @@ public class SysLoginService {
         sysUser.setUserId(userId);
         sysUser.setLoginIp(ip);
         sysUser.setLoginDate(DateUtils.getNowDate());
-        sysUser.setUpdateBy(userId);
+        // TODO: 修复 setUpdateBy 方法找不到的问题
+        // sysUser.setUpdateBy(userId);
         DataPermissionHelper.ignore(() -> userMapper.updateById(sysUser));
     }
 

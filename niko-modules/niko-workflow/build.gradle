@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+}
+
+description = '工作流模块'
+
+dependencies {
+    // 通用工具模块
+    implementation project(':niko-common:niko-common-core')
+    implementation project(':niko-common:niko-common-satoken')
+    implementation project(':niko-common:niko-common-json')
+    implementation project(':niko-common:niko-common-sse')
+    implementation project(':niko-common:niko-common-doc')
+    implementation project(':niko-common:niko-common-mail')
+    implementation project(':niko-common:niko-common-sms')
+    implementation project(':niko-common:niko-common-mybatis')
+    implementation project(':niko-common:niko-common-web')
+    implementation project(':niko-common:niko-common-log')
+    implementation project(':niko-common:niko-common-idempotent')
+    implementation project(':niko-common:niko-common-excel')
+    implementation project(':niko-common:niko-common-translation')
+    implementation project(':niko-common:niko-common-tenant')
+    implementation project(':niko-common:niko-common-security')
+    
+    // 工作流引擎
+    implementation 'org.dromara.warm:warm-flow-mybatis-plus-sb3-starter'
+    implementation 'org.dromara.warm:warm-flow-plugin-ui-sb-web'
+}

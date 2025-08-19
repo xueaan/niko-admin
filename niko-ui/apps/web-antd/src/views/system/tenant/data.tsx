@@ -216,7 +216,7 @@ export const drawerSchema: FormSchemaGetter = () => [
   {
     component: 'Input',
     fieldName: 'domain',
-    help: '可填写域名/端口 填写域名如: www.test.com 或者 www.test.com:8080 填写ip:端口如: 127.0.0.1:8080',
+    help: '可填写域名/端口 填写域名如: www.test.com 或者 www.test.com:9005 填写ip:端口如: 127.0.0.1:9005',
     label: '绑定域名',
     renderComponentContent() {
       return {

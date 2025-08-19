@@ -1,0 +1,15 @@
+// niko-common-doc - 系统接口文档模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    
+    // SpringDoc OpenAPI
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api'
+    
+    // Therapi runtime javadoc
+    implementation 'com.github.therapi:therapi-runtime-javadoc'
+    
+    // Jackson Kotlin module
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
+}

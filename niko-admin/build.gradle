@@ -1,0 +1,70 @@
+// niko-admin - Web服务入口模块
+
+// 应用Spring Boot插件
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    // 数据库驱动
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    runtimeOnly 'org.postgresql:postgresql'
+    
+    // 其他数据库驱动（可选）
+    // runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
+    // runtimeOnly 'com.oracle.database.nls:orai18n'
+    // runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+    
+    // 系统接口文档
+    implementation project(':niko-common:niko-common-doc')
+    
+    // Web入口模块必需的核心依赖
+    implementation project(':niko-common:niko-common-web')
+    implementation project(':niko-common:niko-common-ratelimiter')
+    implementation project(':niko-common:niko-common-mail')
+    
+    // 显式添加编译时必需的核心依赖
+    implementation project(':niko-common:niko-common-core')
+    implementation project(':niko-common:niko-common-mybatis')
+    implementation project(':niko-common:niko-common-tenant')
+    implementation project(':niko-common:niko-common-log')
+    implementation project(':niko-common:niko-common-redis')
+    implementation project(':niko-common:niko-common-satoken')
+    implementation project(':niko-common:niko-common-encrypt')
+    implementation project(':niko-common:niko-common-json')
+    implementation project(':niko-common:niko-common-sse')
+    implementation project(':niko-common:niko-common-sensitive')
+    
+    // Hutool工具类
+    implementation 'cn.hutool:hutool-core'
+    
+    // 业务模块
+    implementation project(':niko-modules:niko-system')
+    implementation project(':niko-modules:niko-job')
+    implementation project(':niko-modules:niko-generator')
+    implementation project(':niko-modules:niko-workflow')
+    
+    // Spring Boot Admin客户端
+    implementation 'de.codecentric:spring-boot-admin-starter-client'
+    
+    // 测试依赖
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
+    // SkyWalking集成（可选）
+    // implementation 'org.apache.skywalking:apm-toolkit-logback-1.x:版本号'
+    // implementation 'org.apache.skywalking:apm-toolkit-trace:版本号'
+}
+
+// Spring Boot打包配置
+jar {
+    enabled = false
+    archiveClassifier = ''
+}
+
+bootJar {
+    archiveFileName = "${project.name}.jar"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+// 启动类配置
+springBoot {
+    mainClass = 'org.niko.NikoApplication'
+}

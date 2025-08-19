@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+}
+
+description = 'generator 代码生成'
+
+dependencies {
+    // 通用工具模块
+    implementation project(':niko-common:niko-common-core')
+    implementation project(':niko-common:niko-common-json')
+    implementation project(':niko-common:niko-common-doc')
+    implementation project(':niko-common:niko-common-mybatis')
+    implementation project(':niko-common:niko-common-web')
+    implementation project(':niko-common:niko-common-log')
+    
+    // velocity代码生成使用模板
+    implementation 'org.apache.velocity:velocity-engine-core'
+    
+    // anyline支持多种数据库
+    implementation "org.anyline:anyline-environment-spring-data-jdbc:${anylineVersion}"
+    implementation "org.anyline:anyline-data-jdbc-mysql:${anylineVersion}"
+    
+    // anyline支持100+种类型数据库 添加对应的jdbc依赖与anyline对应数据库依赖包即可
+    // 如需要其他数据库支持，可以取消注释相应的依赖
+    // implementation "org.anyline:anyline-data-jdbc-oracle:${anylineVersion}"
+    // implementation "org.anyline:anyline-data-jdbc-postgresql:${anylineVersion}"
+    // implementation "org.anyline:anyline-data-jdbc-mssql:${anylineVersion}"
+}

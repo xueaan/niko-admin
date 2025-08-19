@@ -1,0 +1,21 @@
+// niko-common-oss - 对象存储服务模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    implementation project(':niko-common:niko-common-json')
+    implementation project(':niko-common:niko-common-redis')
+    
+    // AWS SDK for Java 2.x
+    implementation('software.amazon.awssdk:s3') {
+        exclude group: 'software.amazon.awssdk', module: 'aws-crt-client'
+        exclude group: 'software.amazon.awssdk', module: 'apache-client'
+        exclude group: 'software.amazon.awssdk', module: 'url-connection-client'
+    }
+    
+    // 基于 Netty 的 HTTP 客户端
+    implementation 'software.amazon.awssdk:netty-nio-client'
+    
+    // 基于 AWS CRT 的 S3 客户端的性能增强的 S3 传输管理器
+    implementation 'software.amazon.awssdk:s3-transfer-manager'
+}

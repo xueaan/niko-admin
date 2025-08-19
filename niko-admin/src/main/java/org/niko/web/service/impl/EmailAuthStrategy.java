@@ -2,6 +2,7 @@ package org.niko.web.service.impl;
 
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.stp.parameter.SaLoginParameter;
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import lombok.RequiredArgsConstructor;
@@ -88,7 +89,8 @@ public class EmailAuthStrategy implements IAuthStrategy {
     }
 
     private SysUserVo loadUserByEmail(String email) {
-        SysUserVo user = userMapper.selectVoOne(new LambdaQueryWrapper<SysUser>().eq(SysUser::getEmail, email));
+        SysUser sysUser = userMapper.selectOne(new LambdaQueryWrapper<SysUser>().eq(SysUser::getEmail, email));
+        SysUserVo user = sysUser != null ? BeanUtil.copyProperties(sysUser, SysUserVo.class) : null;
         if (ObjectUtil.isNull(user)) {
             log.info("登录用户：{} 不存在.", email);
             throw new UserException("user.not.exists", email);

@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "name": "sse",
+      "type": "org.niko.common.sse.config.SseProperties",
+      "sourceType": "org.niko.common.sse.config.SseProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "sse.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.niko.common.sse.config.SseProperties"
+    },
+    {
+      "name": "sse.path",
+      "type": "java.lang.String",
+      "description": "路径",
+      "sourceType": "org.niko.common.sse.config.SseProperties"
+    }
+  ],
+  "hints": []
+}

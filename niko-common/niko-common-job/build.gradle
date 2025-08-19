@@ -1,0 +1,13 @@
+// niko-common-job - 定时任务模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    
+    // Spring Boot AutoConfiguration
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}

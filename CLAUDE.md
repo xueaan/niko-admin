@@ -164,16 +164,16 @@ docker-compose down
 
 ## 代码生成器使用
 
-访问 http://localhost:8080/tool/gen 进行代码生成，配置文件在 `generator.yml`。
+访问 http://localhost:9005/tool/gen 进行代码生成，配置文件在 `generator.yml`。
 
 ## 开发注意事项
 
-- 后端默认运行在8080端口
+- 后端默认运行在9005端口
 - 前端默认运行在5173端口
 - 验证码默认开启 (可通过captcha.enable配置)
 - 多租户功能默认开启 (可通过tenant.enable配置)
 - 支持虚拟线程 (JDK21+)
-- API文档访问: http://localhost:8080/doc.html
+- API文档访问: http://localhost:9005/doc.html
 
 ## 部署相关
 

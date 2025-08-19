@@ -52,6 +52,8 @@ interface MenuProps {
    * @default dark
    */
   theme?: ThemeModeType;
+
+
 }
 
 interface SubMenuProps extends MenuRecordBadgeRaw {

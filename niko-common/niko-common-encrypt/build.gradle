@@ -1,0 +1,20 @@
+// niko-common-encrypt - 数据加解密模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    
+    // BouncyCastle加密库
+    implementation 'org.bouncycastle:bcprov-jdk15to18'
+    
+    // Hutool加密
+    implementation 'cn.hutool:hutool-crypto'
+    
+    // Spring WebMVC
+    implementation 'org.springframework:spring-webmvc'
+    
+    // MyBatis Plus（可选依赖）
+    compileOnly('com.baomidou:mybatis-plus-spring-boot3-starter') {
+        exclude group: 'org.mybatis', module: 'mybatis-spring'
+    }
+}

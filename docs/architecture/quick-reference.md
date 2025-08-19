@@ -25,7 +25,7 @@ CREATE TABLE sys_product (
 ```
 
 #### 步骤2: 使用代码生成器
-1. 访问 `http://localhost:8080/tool/gen`
+1. 访问 `http://localhost:9001/tool/gen`
 2. 选择数据表 `sys_product`
 3. 配置生成信息：
    - 表名：sys_product

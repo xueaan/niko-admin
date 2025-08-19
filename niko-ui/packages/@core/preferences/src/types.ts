@@ -147,6 +147,7 @@ interface NavigationPreferences {
   split: boolean;
   /** 导航菜单风格 */
   styleType: NavigationStyleType;
+
 }
 
 interface SidebarPreferences {

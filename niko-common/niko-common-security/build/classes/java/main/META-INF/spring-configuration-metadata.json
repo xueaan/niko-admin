@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "name": "security",
+      "type": "org.niko.common.security.config.properties.SecurityProperties",
+      "sourceType": "org.niko.common.security.config.properties.SecurityProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "security.excludes",
+      "type": "java.lang.String[]",
+      "description": "排除路径",
+      "sourceType": "org.niko.common.security.config.properties.SecurityProperties"
+    }
+  ],
+  "hints": []
+}

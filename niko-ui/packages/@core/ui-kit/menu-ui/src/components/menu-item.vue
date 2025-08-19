@@ -31,6 +31,8 @@ const menuIcon = computed(() =>
   active.value ? props.activeIcon || props.icon : props.icon,
 );
 
+
+
 const isTopLevelMenuItem = computed(
   () => parentMenu.value?.type.name === 'Menu',
 );

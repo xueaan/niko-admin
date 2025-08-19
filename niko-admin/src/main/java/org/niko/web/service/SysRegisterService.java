@@ -59,8 +59,8 @@ public class SysRegisterService {
         sysUser.setUserType(userType);
 
         boolean exist = TenantHelper.dynamic(tenantId, () -> {
-            return userMapper.exists(new LambdaQueryWrapper<SysUser>()
-                .eq(SysUser::getUserName, sysUser.getUserName()));
+            return userMapper.selectCount(new LambdaQueryWrapper<SysUser>()
+                .eq(SysUser::getUserName, sysUser.getUserName())) > 0;
         });
         if (exist) {
             throw new UserException("user.register.save.error", username);

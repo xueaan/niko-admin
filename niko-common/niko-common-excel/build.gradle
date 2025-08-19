@@ -1,0 +1,10 @@
+// niko-common-excel - Excel处理模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    implementation project(':niko-common:niko-common-json')
+    
+    // FastExcel
+    implementation 'cn.idev.excel:fastexcel'
+}

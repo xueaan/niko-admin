@@ -16,6 +16,7 @@ const navigationStyleType = defineModel<string>('navigationStyleType');
 const navigationSplit = defineModel<boolean>('navigationSplit');
 const navigationAccordion = defineModel<boolean>('navigationAccordion');
 
+
 const stylesItems: SelectOption[] = [
   { label: $t('preferences.rounded'), value: 'rounded' },
   { label: $t('preferences.plain'), value: 'plain' },
@@ -42,4 +43,5 @@ const stylesItems: SelectOption[] = [
   <SwitchItem v-model="navigationAccordion" :disabled="disabled">
     {{ $t('preferences.navigationMenu.accordion') }}
   </SwitchItem>
+
 </template>

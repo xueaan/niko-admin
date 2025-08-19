@@ -1,0 +1,17 @@
+// niko-common-mybatis - 数据库服务模块
+
+dependencies {
+    // 依赖其他common模块
+    implementation project(':niko-common:niko-common-core')
+    implementation project(':niko-common:niko-common-satoken')
+    
+    // Dynamic数据源
+    implementation 'com.baomidou:dynamic-datasource-spring-boot3-starter'
+    
+    // MyBatis Plus
+    implementation 'com.baomidou:mybatis-plus-spring-boot3-starter'
+    implementation 'com.baomidou:mybatis-plus-jsqlparser'
+    
+    // SQL性能分析插件
+    implementation 'p6spy:p6spy'
+}

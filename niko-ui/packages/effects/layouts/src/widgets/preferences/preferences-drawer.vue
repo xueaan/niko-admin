@@ -128,6 +128,7 @@ const navigationStyleType = defineModel<NavigationStyleType>(
 const navigationSplit = defineModel<boolean>('navigationSplit');
 const navigationAccordion = defineModel<boolean>('navigationAccordion');
 
+
 // const logoVisible = defineModel<boolean>('logoVisible');
 
 const footerEnable = defineModel<boolean>('footerEnable');
@@ -341,6 +342,7 @@ async function handleReset() {
                 v-model:navigation-accordion="navigationAccordion"
                 v-model:navigation-split="navigationSplit"
                 v-model:navigation-style-type="navigationStyleType"
+
                 :disabled="isFullContent"
                 :disabled-navigation-split="!isMixedNav"
               />

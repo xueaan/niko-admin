@@ -1,0 +1,34 @@
+plugins {
+    id 'java-library'
+}
+
+description = 'system系统模块'
+
+dependencies {
+    // 通用工具模块
+    implementation project(':niko-common:niko-common-core')
+    implementation project(':niko-common:niko-common-satoken')
+    implementation project(':niko-common:niko-common-json')
+    implementation project(':niko-common:niko-common-redis')
+    implementation project(':niko-common:niko-common-doc')
+    implementation project(':niko-common:niko-common-mybatis')
+    implementation project(':niko-common:niko-common-translation')
+    implementation project(':niko-common:niko-common-log')
+    implementation project(':niko-common:niko-common-web')
+    implementation project(':niko-common:niko-common-tenant')
+    implementation project(':niko-common:niko-common-security')
+    implementation project(':niko-common:niko-common-idempotent')
+    implementation project(':niko-common:niko-common-sensitive')
+    implementation project(':niko-common:niko-common-encrypt')
+    implementation project(':niko-common:niko-common-websocket')
+    implementation project(':niko-common:niko-common-sse')
+    
+    // OSS功能模块
+    implementation project(':niko-common:niko-common-oss')
+    
+    // Excel功能模块
+    implementation project(':niko-common:niko-common-excel')
+    
+    // SMS功能模块
+    implementation project(':niko-common:niko-common-sms')
+}

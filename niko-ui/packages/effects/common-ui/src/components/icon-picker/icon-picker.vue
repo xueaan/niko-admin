@@ -18,6 +18,8 @@ import {
   PaginationListItem,
   PaginationNext,
   PaginationPrev,
+  RadioGroup,
+  RadioGroupItem,
   VbenIcon,
   VbenIconButton,
   VbenPopover,
@@ -26,7 +28,12 @@ import { isFunction } from '@vben-core/shared/utils';
 
 import { objectOmit, refDebounced, watchDebounced } from '@vueuse/core';
 
-import { fetchIconsData } from './icons';
+import { 
+  fetchIconsData, 
+  getAllOfflineIcons,
+  type IconMode 
+} from './icons';
+import { getOfflineIconStats } from '@vben/icons';
 
 interface Props {
   pageSize?: number;
@@ -76,17 +83,35 @@ const keyword = ref('');
 const keywordDebounce = refDebounced(keyword, 300);
 const innerIcons = ref<string[]>([]);
 
+// 图标加载模式（从localStorage读取或使用默认值）
+const iconMode = ref<IconMode>(
+  (localStorage.getItem('icon-picker-mode') as IconMode) || 'online'
+);
+
+// 离线图标统计信息
+const offlineStats = computed(() => getOfflineIconStats());
+
+// 监听模式变化，保存到localStorage
+watch(iconMode, async (mode) => {
+  localStorage.setItem('icon-picker-mode', mode);
+  // 重置分页
+  currentPage.value = 1;
+  // 模式切换时重新加载图标
+  if (props.prefix && props.prefix !== 'svg' && props.autoFetchApi) {
+    innerIcons.value = await fetchIconsData(props.prefix, mode);
+  }
+});
+
 /* 当检索关键词变化时，重置分页 */
 watch(keywordDebounce, () => {
   currentPage.value = 1;
-  setCurrentPage(1);
 });
   
 watchDebounced(
   () => props.prefix,
   async (prefix) => {
     if (prefix && prefix !== 'svg' && props.autoFetchApi) {
-      innerIcons.value = await fetchIconsData(prefix);
+      innerIcons.value = await fetchIconsData(prefix, iconMode.value);
     }
   },
   { immediate: true, debounce: 500, maxWait: 1000 },
@@ -94,6 +119,12 @@ watchDebounced(
 
 const currentList = computed(() => {
   try {
+    // 离线模式下，直接返回所有离线图标
+    if (iconMode.value === 'offline') {
+      return getAllOfflineIcons();
+    }
+    
+    // 在线模式
     if (props.prefix) {
       if (
         props.prefix !== 'svg' &&
@@ -126,6 +157,15 @@ const { paginationList, total, setCurrentPage } = usePagination(
   showList,
   props.pageSize,
 );
+
+// 监听图标列表变化，确保当前页码有效
+watch([showList, total], () => {
+  const totalPages = Math.ceil(total.value / props.pageSize);
+  if (totalPages > 0 && currentPage.value > totalPages) {
+    currentPage.value = 1;
+    setCurrentPage(1);
+  }
+});
 
 watchEffect(() => {
   currentSelect.value = modelValue.value;
@@ -239,18 +279,43 @@ defineExpose({ toggleOpenState, open, close });
         v-bind="$attrs"
       />
     </template>
-    <div class="mb-2 flex w-full">
-      <component
-        v-if="inputComponent"
-        :is="inputComponent"
-        v-bind="searchInputProps"
-      />
-      <Input
-        v-else
-        class="mx-2 h-8 w-full"
-        :placeholder="$t('ui.iconPicker.search')"
-        v-model="keyword"
-      />
+    <div class="mb-2 flex w-full flex-col gap-2">
+      <!-- 模式切换 -->
+      <div class="flex items-center justify-between px-2">
+        <RadioGroup v-model="iconMode" class="flex gap-2">
+          <div class="flex items-center space-x-2">
+            <RadioGroupItem value="offline" id="offline" />
+            <label for="offline" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              离线模式
+            </label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <a href="https://icon-sets.iconify.design/" target="_blank" class="flex items-center space-x-2 text-primary hover:underline">
+              <RadioGroupItem value="online" id="online" />
+              <label for="online" class="text-sm font-medium cursor-pointer">
+                在线搜索
+              </label>
+            </a>
+          </div>
+        </RadioGroup>
+        <div class="text-xs text-muted-foreground">
+          离线图标: {{ offlineStats.total }}个
+        </div>
+      </div>
+      <!-- 搜索框 -->
+      <div class="flex w-full">
+        <component
+          v-if="inputComponent"
+          :is="inputComponent"
+          v-bind="searchInputProps"
+        />
+        <Input
+          v-else
+          class="mx-2 h-8 w-full"
+          :placeholder="$t('ui.iconPicker.search')"
+          v-model="keyword"
+        />
+      </div>
     </div>
 
     <template v-if="paginationList.length > 0">
@@ -278,6 +343,7 @@ defineExpose({ toggleOpenState, open, close });
           :items-per-page="36"
           :sibling-count="1"
           :total="total"
+          :page="currentPage"
           show-edges
           size="small"
           @update:page="handlePageChange"
